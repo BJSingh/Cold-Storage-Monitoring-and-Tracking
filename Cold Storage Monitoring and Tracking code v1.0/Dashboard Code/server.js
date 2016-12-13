@@ -1,11 +1,13 @@
 var Temp=0,Hum=0,Bat=0,lat=0,lng=0;
 var PubNub = require('pubnub')
 
+//Local Server needs only to subsribe pubnub but for demo we are using publish  
 pubnub = new PubNub({
         publishKey : 'pub-c-3754af37-b56d-406b-870c-424b2eba49ea',    //replace with your publish key
         subscribeKey : 'sub-c-d4cf22c8-bdf2-11e6-b490-02ee2ddab7fe'	  //replace with your subscribe Key
     })
-	
+
+//demo publish message	
 function publishSampleMessage() {
         console.log("Since we're publishing on subscribe connectEvent, we're sure we'll receive the following publish.");
         var publishConfig = {
@@ -16,7 +18,8 @@ function publishSampleMessage() {
             console.log(status, response);
         })
     }
-       
+
+//Once new data published to pubnub then addListener function is called
 pubnub.addListener({
     status: function(statusEvent) {
         if (statusEvent.category === "PNConnectedCategory") {
@@ -43,6 +46,7 @@ pubnub.addListener({
 })  
 
 console.log("Subscribing..");
+//subscribing to pubnub for getting sensor data published by LinkIt One 
 pubnub.subscribe({
     channels: ['my_channel'] 
 })
@@ -68,7 +72,7 @@ io.sockets.on('connection', function(socket){
 	socket.emit('Hum', {'Hum': Hum});
 	socket.emit('level', {'level': Bat});
 	socket.emit('lat', {'lat': lat});
-    socket.emit('lng', {'lng': lng})
+        socket.emit('lng', {'lng': lng});
    
 	//send data to every connected clients after equal interval for updates
     setInterval(function(){
