@@ -1,4 +1,5 @@
 Cold Storage Monitoring and Tracking code v1.0
+IoT based solution to make delivery of temperature sensitive perishable products more efficient.
 
 Arduino Sketch for LinkIt One (v1.0):-
 LinkIt ONE reads the sensors data (Temperature and Humidity) along with the GPS co-ordinates, Battery Level and RTC Time.
