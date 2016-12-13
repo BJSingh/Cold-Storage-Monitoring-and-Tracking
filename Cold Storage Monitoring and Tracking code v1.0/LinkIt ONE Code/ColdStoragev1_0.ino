@@ -50,7 +50,7 @@ int day = 0, month = 0, year = 0;
 String time_format = "00:00:00", date_format = "00:00:0000";
 String lat_format = "0000.000000", lon_format = "0000.000000";
 
-const char *phoneNum = "+917276913016";  //Phone number for SMS and emergency alert
+const char *phoneNum = "";  //Phone number for SMS and emergency alert
 
 String toDate,toTime;
 
